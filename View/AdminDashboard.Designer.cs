@@ -98,7 +98,6 @@
             this.Text = "AdminDashboard";
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion

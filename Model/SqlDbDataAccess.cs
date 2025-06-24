@@ -10,7 +10,8 @@ namespace Tournament_Management_System.Model
 {
     public class SqlDbDataAccess
     {
-        private const string connectionString = @"Data Source=DESKTOP-U1DMSHA; Initial Catalog=OnlineTournamentDB; Integrated Security=True";
+        // Corrected the Data Source to match your SQL Server instance name from the screenshot.
+        private const string connectionString = @"Data Source=DESKTOP-U1DM5HA; Initial Catalog=OnlineTournamentDB; Integrated Security=True";
         public SqlCommand GetQuery(string query)
         {
             var connection = new SqlConnection(connectionString);

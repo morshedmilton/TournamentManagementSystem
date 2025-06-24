@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -23,6 +24,20 @@ namespace Tournament_Management_System.View
             this.forgetPasswordButton.Click += new System.EventHandler(this.forgetPasswordButton_Click);
         }
 
+        private string ComputeSha256Hash(string rawData)
+        {
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData));
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                return builder.ToString();
+            }
+        }
+
         private void loginButton_Click(object sender, EventArgs e)
         {
             string username = usernameTextBox.Text;
@@ -34,8 +49,10 @@ namespace Tournament_Management_System.View
                 return;
             }
 
+            string hashedPassword = ComputeSha256Hash(password);
+
             UserController uc = new UserController();
-            User user = uc.SearchUser(username, password);
+            User user = uc.SearchUser(username, hashedPassword);
 
             if (user != null)
             {
@@ -77,34 +94,12 @@ namespace Tournament_Management_System.View
 
         private void forgetPasswordButton_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            PasswordResetForm prf = new PasswordResetForm();
-            prf.Show();
+            MessageBox.Show("Password Reset functionality is not yet available.", "Coming Soon", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void exitButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-
-        private void LoginForm_Load(object sender, EventArgs e)
-        {
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
         }
     }
 }

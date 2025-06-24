@@ -93,6 +93,36 @@ namespace Tournament_Management_System.Model
             return userList;
         }
 
+        public bool IsUserIdTaken(int userId)
+        {
+            SqlCommand cmd = sda.GetQuery("SELECT COUNT(*) FROM Users WHERE UserID=@userId;");
+            cmd.Parameters.AddWithValue("@userId", userId);
+            cmd.Connection.Open();
+            int count = (int)cmd.ExecuteScalar();
+            cmd.Connection.Close();
+            return count > 0;
+        }
+
+        public bool IsUsernameTaken(string username)
+        {
+            SqlCommand cmd = sda.GetQuery("SELECT COUNT(*) FROM Users WHERE Username=@username;");
+            cmd.Parameters.AddWithValue("@username", username);
+            cmd.Connection.Open();
+            int count = (int)cmd.ExecuteScalar();
+            cmd.Connection.Close();
+            return count > 0;
+        }
+
+        public bool IsEmailTaken(string email)
+        {
+            SqlCommand cmd = sda.GetQuery("SELECT COUNT(*) FROM Users WHERE Email=@email;");
+            cmd.Parameters.AddWithValue("@email", email);
+            cmd.Connection.Open();
+            int count = (int)cmd.ExecuteScalar();
+            cmd.Connection.Close();
+            return count > 0;
+        }
+
         private List<User> GetData(SqlCommand cmd)
         {
             cmd.Connection.Open();

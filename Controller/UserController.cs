@@ -47,5 +47,23 @@ namespace Tournament_Management_System.Controller
             List<User> userList = usersDataAccess.GetAllUsers();
             return userList;
         }
+
+        public bool IsUserIdTaken(int userId)
+        {
+            Users usersDataAccess = new Users();
+            return usersDataAccess.IsUserIdTaken(userId);
+        }
+
+        public bool IsUsernameTaken(string username)
+        {
+            Users usersDataAccess = new Users();
+            return usersDataAccess.IsUsernameTaken(username);
+        }
+
+        public bool IsEmailTaken(string email)
+        {
+            Users usersDataAccess = new Users();
+            return usersDataAccess.IsEmailTaken(email);
+        }
     }
 }
