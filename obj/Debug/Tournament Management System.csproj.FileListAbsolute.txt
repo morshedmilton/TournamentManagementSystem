@@ -1,0 +1,10 @@
+E:\! Don't Sleep\C#\Final Term Project\Tournament Management System\obj\Debug\Tournament Management System.csproj.AssemblyReference.cache
+E:\! Don't Sleep\C#\Final Term Project\Tournament Management System\obj\Debug\Tournament_Management_System.Properties.Resources.resources
+E:\! Don't Sleep\C#\Final Term Project\Tournament Management System\obj\Debug\Tournament_Management_System.View.LoginForm.resources
+E:\! Don't Sleep\C#\Final Term Project\Tournament Management System\obj\Debug\Tournament_Management_System.View.RegistrationForm.resources
+E:\! Don't Sleep\C#\Final Term Project\Tournament Management System\obj\Debug\Tournament Management System.csproj.GenerateResource.cache
+E:\! Don't Sleep\C#\Final Term Project\Tournament Management System\obj\Debug\Tournament Management System.csproj.CoreCompileInputs.cache
+E:\! Don't Sleep\C#\Final Term Project\Tournament Management System\obj\Debug\Tournament_Management_System.View.AdminDashboard.resources
+E:\! Don't Sleep\C#\Final Term Project\Tournament Management System\obj\Debug\Tournament_Management_System.View.ManageGamesForm.resources
+E:\! Don't Sleep\C#\Final Term Project\Tournament Management System\obj\Debug\Tournament_Management_System.View.ManageUsersAndTeamsForm.resources
+E:\! Don't Sleep\C#\Final Term Project\Tournament Management System\obj\Debug\Tournament_Management_System.View.PlayerDashboard.resources
