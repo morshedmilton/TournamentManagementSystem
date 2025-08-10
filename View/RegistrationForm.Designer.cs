@@ -1,4 +1,4 @@
-﻿namespace Tournament_Management_System.View
+﻿  namespace Tournament_Management_System.View
 {
     partial class RegistrationForm
     {
@@ -229,8 +229,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "RegistrationForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RegistrationForm";
-            this.Load += new System.EventHandler(this.RegistrationForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

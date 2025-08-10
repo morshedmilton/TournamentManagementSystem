@@ -112,6 +112,21 @@ namespace Tournament_Management_System.Model
             cmd.Connection.Close();
             return count > 0;
         }
+        public User SearchUserByUsername(string username)
+        {
+            SqlCommand cmd = sda.GetQuery("SELECT * FROM Users WHERE Username=@username;");
+            cmd.Parameters.AddWithValue("@username", username);
+            cmd.CommandType = CommandType.Text;
+            List<User> userList = this.GetData(cmd);
+            if (userList.Count > 0)
+            {
+                return userList[0];
+            }
+            else
+            {
+                return null;
+            }
+        }
 
         public bool IsEmailTaken(string email)
         {

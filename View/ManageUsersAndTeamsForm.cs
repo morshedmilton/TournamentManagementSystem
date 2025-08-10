@@ -28,6 +28,7 @@ namespace Tournament_Management_System.View
             this.activateButton.Click += new System.EventHandler(this.activateButton_Click);
             this.deactivateButton.Click += new System.EventHandler(this.deactivateButton_Click);
 
+            this.createTeamButton.Click += new System.EventHandler(this.createTeamButton_Click);
             this.teamsDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.teamsDataGridView_CellClick);
             this.teamMembersDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.teamMembersDataGridView_CellClick);
             this.updateTeamButton.Click += new System.EventHandler(this.updateTeamButton_Click);
@@ -41,6 +42,7 @@ namespace Tournament_Management_System.View
         {
             PopulatePlayersGrid();
             PopulateTeamsGrid();
+            clearTeamButton_Click(sender, e);
         }
 
         private void PopulatePlayersGrid()
@@ -153,9 +155,29 @@ namespace Tournament_Management_System.View
             teamMembersDataGridView.DataSource = teamMembers;
         }
 
+        private void createTeamButton_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(teamNameTextBox.Text))
+            {
+                MessageBox.Show("Please enter a team name.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            Team newTeam = new Team();
+            newTeam.TeamName = teamNameTextBox.Text;
+            newTeam.Date_Created = DateTime.Now;
+
+            TeamController tc = new TeamController();
+            tc.AddTeam(newTeam);
+
+            MessageBox.Show("Team created successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            PopulateTeamsGrid();
+            clearTeamButton_Click(sender, e);
+        }
+
         private void updateTeamButton_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(teamIdTextBox.Text))
+            if (string.IsNullOrEmpty(teamIdTextBox.Text) || teamIdTextBox.Text == "[Auto-generated]")
             {
                 MessageBox.Show("Please select a team to update.", "No Team Selected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -195,9 +217,32 @@ namespace Tournament_Management_System.View
 
         private void deleteTeamButton_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(teamIdTextBox.Text))
+            if (string.IsNullOrEmpty(teamIdTextBox.Text) || teamIdTextBox.Text == "[Auto-generated]")
             {
                 MessageBox.Show("Please select a team to delete.", "No Team Selected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int teamId = Convert.ToInt32(teamIdTextBox.Text);
+
+            PlayerController pc = new PlayerController();
+            if (pc.GetPlayerCountByTeam(teamId) > 0)
+            {
+                MessageBox.Show("Cannot delete this team because it still has players. Please remove all players from the team first.", "Deletion Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            MatchController mc = new MatchController();
+            if (mc.GetMatchCountByTeam(teamId) > 0)
+            {
+                MessageBox.Show("Cannot delete this team because it has a match history. You must first delete the tournament(s) it played in.", "Deletion Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            TournamentRegistrationController trc = new TournamentRegistrationController();
+            if (trc.GetRegistrationCountByTeam(teamId) > 0)
+            {
+                MessageBox.Show("Cannot delete this team because it is registered for a tournament. You must first delete the tournament(s) it is registered in.", "Deletion Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -208,19 +253,25 @@ namespace Tournament_Management_System.View
 
             if (confirmResult == DialogResult.Yes)
             {
-                int teamId = Convert.ToInt32(teamIdTextBox.Text);
-                TeamController tc = new TeamController();
-                tc.DeleteTeam(teamId);
-                MessageBox.Show("Team deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                try
+                {
+                    TeamController tc = new TeamController();
+                    tc.DeleteTeam(teamId);
+                    MessageBox.Show("Team deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                PopulateTeamsGrid();
-                clearTeamButton_Click(sender, e);
+                    PopulateTeamsGrid();
+                    clearTeamButton_Click(sender, e);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An unexpected error occurred during deletion: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
         private void clearTeamButton_Click(object sender, EventArgs e)
         {
-            teamIdTextBox.Text = "";
+            teamIdTextBox.Text = "[Auto-generated]";
             teamNameTextBox.Text = "";
             captainIdTextBox.Text = "";
             addPlayerIdTextBox.Text = "";
@@ -230,7 +281,7 @@ namespace Tournament_Management_System.View
 
         private void addPlayerButton_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(teamIdTextBox.Text))
+            if (string.IsNullOrEmpty(teamIdTextBox.Text) || teamIdTextBox.Text == "[Auto-generated]")
             {
                 MessageBox.Show("Please select a team first.", "No Team Selected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -300,6 +351,16 @@ namespace Tournament_Management_System.View
             this.Hide();
             AdminDashboard ad = new AdminDashboard(this.adminUser);
             ad.Show();
+        }
+
+        private void teamMembersDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void ManageUsersAndTeamsForm_Load_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -15,6 +15,12 @@ namespace Tournament_Management_System.Controller
             matchesDataAccess.AddMatch(match);
         }
 
+        public void AddMatches(List<Match> matches)
+        {
+            Matches matchesDataAccess = new Matches();
+            matchesDataAccess.AddMatches(matches);
+        }
+
         public void UpdateMatchResult(Match match)
         {
             Matches matchesDataAccess = new Matches();
@@ -25,6 +31,18 @@ namespace Tournament_Management_System.Controller
         {
             Matches matchesDataAccess = new Matches();
             matchesDataAccess.DeleteMatch(matchId);
+        }
+
+        public void DeleteMatchesByTournament(int tournamentId)
+        {
+            Matches matchesDataAccess = new Matches();
+            matchesDataAccess.DeleteMatchesByTournament(tournamentId);
+        }
+
+        public int GetMatchCountByTeam(int teamId)
+        {
+            Matches matchesDataAccess = new Matches();
+            return matchesDataAccess.GetMatchCountByTeam(teamId);
         }
 
         public Match SearchMatchById(int matchId)
@@ -39,6 +57,12 @@ namespace Tournament_Management_System.Controller
             Matches matchesDataAccess = new Matches();
             List<Match> matchList = matchesDataAccess.GetMatchesByTournament(tournamentId);
             return matchList;
+        }
+
+        public List<Match> GetMatchesByTournamentAndTeam(int tournamentId, int teamId)
+        {
+            Matches matchesDataAccess = new Matches();
+            return matchesDataAccess.GetMatchesByTournamentAndTeam(tournamentId, teamId);
         }
     }
 }

@@ -33,6 +33,12 @@ namespace Tournament_Management_System.Controller
             User user = usersDataAccess.SearchUser(username, password);
             return user;
         }
+        public User SearchUserByUsername(string username)
+        {
+            Users usersDataAccess = new Users();
+            User user = usersDataAccess.SearchUserByUsername(username);
+            return user;
+        }
 
         public User SearchUserById(int userId)
         {

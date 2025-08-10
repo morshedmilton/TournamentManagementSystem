@@ -12,10 +12,15 @@ namespace Tournament_Management_System.Model
     {
         SqlDbDataAccess sda = new SqlDbDataAccess();
 
-        public void AddTournament(Tournament tournament)
+        public int AddTournament(Tournament tournament)
         {
-            SqlCommand cmd = sda.GetQuery("INSERT INTO Tournaments (TournamentID, TournamentName, TournamentStartDate, TournamentEndDate, Status, GameID, Organizer_UserID) VALUES(@tId, @tName, @startDate, @endDate, @status, @gameId, @organizerId);");
-            cmd.Parameters.AddWithValue("@tId", tournament.TournamentID);
+            // The SQL query no longer includes TournamentID in the INSERT list.
+            // We added "SET @tId = SCOPE_IDENTITY();" to get the new ID back.
+            SqlCommand cmd = sda.GetQuery("INSERT INTO Tournaments (TournamentName, TournamentStartDate, TournamentEndDate, Status, GameID, Organizer_UserID) VALUES(@tName, @startDate, @endDate, @status, @gameId, @organizerId); SET @tId = SCOPE_IDENTITY();");
+
+            // This is an output parameter to receive the new ID from the database.
+            cmd.Parameters.Add("@tId", SqlDbType.Int).Direction = ParameterDirection.Output;
+
             cmd.Parameters.AddWithValue("@tName", tournament.TournamentName);
             cmd.Parameters.AddWithValue("@startDate", tournament.TournamentStartDate);
             cmd.Parameters.AddWithValue("@endDate", tournament.TournamentEndDate);
@@ -25,7 +30,9 @@ namespace Tournament_Management_System.Model
             cmd.CommandType = CommandType.Text;
             cmd.Connection.Open();
             cmd.ExecuteNonQuery();
+            int newTournamentId = Convert.ToInt32(cmd.Parameters["@tId"].Value);
             cmd.Connection.Close();
+            return newTournamentId;
         }
 
         public void UpdateTournament(Tournament tournament)

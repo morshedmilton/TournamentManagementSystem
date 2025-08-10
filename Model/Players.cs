@@ -65,6 +65,21 @@ namespace Tournament_Management_System.Model
             cmd.ExecuteNonQuery();
             cmd.Connection.Close();
         }
+        public Player SearchPlayerByUserId(int userId)
+        {
+            SqlCommand cmd = sda.GetQuery("SELECT * FROM Players WHERE UserID=@userId;");
+            cmd.Parameters.AddWithValue("@userId", userId);
+            cmd.CommandType = CommandType.Text;
+            List<Player> playerList = this.GetData(cmd);
+            if (playerList.Count > 0)
+            {
+                return playerList[0];
+            }
+            else
+            {
+                return null;
+            }
+        }
 
         public Player SearchPlayerById(int playerId)
         {
@@ -80,6 +95,15 @@ namespace Tournament_Management_System.Model
             {
                 return null;
             }
+        }
+        public int GetPlayerCountByTeam(int teamId)
+        {
+            SqlCommand cmd = sda.GetQuery("SELECT COUNT(*) FROM Players WHERE TeamID = @teamId;");
+            cmd.Parameters.AddWithValue("@teamId", teamId);
+            cmd.Connection.Open();
+            int count = (int)cmd.ExecuteScalar();
+            cmd.Connection.Close();
+            return count;
         }
 
         public List<Player> GetAllPlayers()

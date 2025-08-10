@@ -95,9 +95,11 @@
             this.Controls.Add(this.manageUsersButton);
             this.Controls.Add(this.manageTournamentsButton);
             this.Name = "AdminDashboard";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdminDashboard";
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion

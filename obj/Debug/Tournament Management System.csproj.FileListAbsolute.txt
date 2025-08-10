@@ -13,4 +13,10 @@ E:\! Don't Sleep\C#\Final Term Project\Tournament Management System\obj\Debug\To
 E:\! Don't Sleep\C#\Final Term Project\Tournament Management System\obj\Debug\Tournament Management System.csproj.CoreCompileInputs.cache
 E:\! Don't Sleep\C#\Final Term Project\Tournament Management System\obj\Debug\Tournament Management System.exe
 E:\! Don't Sleep\C#\Final Term Project\Tournament Management System\obj\Debug\Tournament Management System.pdb
+E:\! Don't Sleep\C#\Final Term Project\Tournament Management System\obj\Debug\Tournament_Management_System.View.ManageTournamentsAndMatchesForm.resources
+E:\! Don't Sleep\C#\Final Term Project\Tournament Management System\obj\Debug\Tournament_Management_System.View.PasswordResetForm.resources
+E:\! Don't Sleep\C#\Final Term Project\Tournament Management System\obj\Debug\Tournament_Management_System.View.ViewTournamentsForm.resources
+E:\! Don't Sleep\C#\Final Term Project\Tournament Management System\obj\Debug\Tournament_Management_System.View.ViewMyMatchesForm.resources
+E:\! Don't Sleep\C#\Final Term Project\Tournament Management System\obj\Debug\Tournament_Management_System.View.PlayerProfileForm.resources
+E:\! Don't Sleep\C#\Final Term Project\Tournament Management System\obj\Debug\Tournament_Management_System.View.ManageTeamForm.resources
 E:\! Don't Sleep\C#\Final Term Project\Tournament Management System\obj\Debug\Tournament Management System.exe.config

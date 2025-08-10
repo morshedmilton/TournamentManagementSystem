@@ -9,10 +9,10 @@ namespace Tournament_Management_System.Controller
 {
     public class TournamentController
     {
-        public void AddTournament(Tournament tournament)
+        public int AddTournament(Tournament tournament)
         {
             Tournaments tournamentsDataAccess = new Tournaments();
-            tournamentsDataAccess.AddTournament(tournament);
+            return tournamentsDataAccess.AddTournament(tournament);
         }
 
         public void UpdateTournament(Tournament tournament)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+//System.Windows.Forms.Form;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -94,12 +95,15 @@ namespace Tournament_Management_System.View
 
         private void forgetPasswordButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Password Reset functionality is not yet available.", "Coming Soon", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.Hide();
+            PasswordResetForm prf = new PasswordResetForm();
+            prf.Show();
         }
 
         private void exitButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
+
     }
 }

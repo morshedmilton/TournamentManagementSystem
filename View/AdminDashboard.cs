@@ -29,12 +29,9 @@ namespace Tournament_Management_System.View
 
         private void manageTournamentsButton_Click(object sender, EventArgs e)
         {
-            // This feature is not implemented yet.
-            MessageBox.Show("Manage Tournaments & Matches functionality is not yet available.", "Coming Soon", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            // The lines below are commented out because the form does not exist yet.
-            // this.Hide();
-            // ManageTournamentsAndMatchesForm mtmf = new ManageTournamentsAndMatchesForm(this.adminUser);
-            // mtmf.Show();
+            this.Hide();
+            ManageTournamentsAndMatchesForm mtmf = new ManageTournamentsAndMatchesForm(this.adminUser);
+            mtmf.Show();
         }
 
         private void manageUsersButton_Click(object sender, EventArgs e)

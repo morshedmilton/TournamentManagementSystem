@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Tournament_Management_System.View; // View ফোল্ডারটিকে রেফারেন্স করার জন্য এই লাইনটি জরুরি
+using Tournament_Management_System.View;
 
 namespace Tournament_Management_System
 {
@@ -17,7 +17,6 @@ namespace Tournament_Management_System
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            // এখানে new Form1() এর পরিবর্তে new LoginForm() লেখা হয়েছে
             Application.Run(new LoginForm());
         }
     }

@@ -43,6 +43,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.teamMembersDataGridView = new System.Windows.Forms.DataGridView();
             this.teamDetailsGroupBox = new System.Windows.Forms.GroupBox();
+            this.createTeamButton = new System.Windows.Forms.Button();
             this.clearTeamButton = new System.Windows.Forms.Button();
             this.deleteTeamButton = new System.Windows.Forms.Button();
             this.updateTeamButton = new System.Windows.Forms.Button();
@@ -77,7 +78,7 @@
             this.mainTabControl.Name = "mainTabControl";
             this.mainTabControl.Padding = new System.Drawing.Point(6, 5);
             this.mainTabControl.SelectedIndex = 0;
-            this.mainTabControl.Size = new System.Drawing.Size(901, 603);
+            this.mainTabControl.Size = new System.Drawing.Size(1285, 892);
             this.mainTabControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.mainTabControl.TabIndex = 0;
             // 
@@ -88,7 +89,7 @@
             this.playersTabPage.Location = new System.Drawing.Point(4, 34);
             this.playersTabPage.Name = "playersTabPage";
             this.playersTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.playersTabPage.Size = new System.Drawing.Size(893, 565);
+            this.playersTabPage.Size = new System.Drawing.Size(1277, 854);
             this.playersTabPage.TabIndex = 0;
             this.playersTabPage.Text = "Manage Players";
             this.playersTabPage.UseVisualStyleBackColor = true;
@@ -99,16 +100,16 @@
             this.groupBox1.Controls.Add(this.activateButton);
             this.groupBox1.Controls.Add(this.selectedPlayerLabel);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(6, 431);
+            this.groupBox1.Location = new System.Drawing.Point(752, 21);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(881, 128);
+            this.groupBox1.Size = new System.Drawing.Size(519, 463);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Player Account Actions";
             // 
             // deactivateButton
             // 
-            this.deactivateButton.Location = new System.Drawing.Point(706, 44);
+            this.deactivateButton.Location = new System.Drawing.Point(254, 109);
             this.deactivateButton.Name = "deactivateButton";
             this.deactivateButton.Size = new System.Drawing.Size(156, 49);
             this.deactivateButton.TabIndex = 2;
@@ -117,7 +118,7 @@
             // 
             // activateButton
             // 
-            this.activateButton.Location = new System.Drawing.Point(535, 44);
+            this.activateButton.Location = new System.Drawing.Point(62, 109);
             this.activateButton.Name = "activateButton";
             this.activateButton.Size = new System.Drawing.Size(156, 49);
             this.activateButton.TabIndex = 1;
@@ -140,7 +141,7 @@
             this.playersDataGridView.Name = "playersDataGridView";
             this.playersDataGridView.RowHeadersWidth = 51;
             this.playersDataGridView.RowTemplate.Height = 24;
-            this.playersDataGridView.Size = new System.Drawing.Size(881, 419);
+            this.playersDataGridView.Size = new System.Drawing.Size(711, 672);
             this.playersDataGridView.TabIndex = 0;
             // 
             // teamsTabPage
@@ -152,7 +153,7 @@
             this.teamsTabPage.Location = new System.Drawing.Point(4, 34);
             this.teamsTabPage.Name = "teamsTabPage";
             this.teamsTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.teamsTabPage.Size = new System.Drawing.Size(893, 565);
+            this.teamsTabPage.Size = new System.Drawing.Size(1277, 854);
             this.teamsTabPage.TabIndex = 1;
             this.teamsTabPage.Text = "Manage Teams";
             this.teamsTabPage.UseVisualStyleBackColor = true;
@@ -164,28 +165,28 @@
             this.teamMembersGroupBox.Controls.Add(this.addPlayerIdTextBox);
             this.teamMembersGroupBox.Controls.Add(this.label5);
             this.teamMembersGroupBox.Controls.Add(this.teamMembersDataGridView);
-            this.teamMembersGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.teamMembersGroupBox.Location = new System.Drawing.Point(428, 346);
+            this.teamMembersGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.teamMembersGroupBox.Location = new System.Drawing.Point(6, 576);
             this.teamMembersGroupBox.Name = "teamMembersGroupBox";
-            this.teamMembersGroupBox.Size = new System.Drawing.Size(459, 213);
+            this.teamMembersGroupBox.Size = new System.Drawing.Size(1250, 265);
             this.teamMembersGroupBox.TabIndex = 3;
             this.teamMembersGroupBox.TabStop = false;
             this.teamMembersGroupBox.Text = "Team Members";
             // 
             // removePlayerButton
             // 
-            this.removePlayerButton.Location = new System.Drawing.Point(269, 155);
+            this.removePlayerButton.Location = new System.Drawing.Point(1020, 191);
             this.removePlayerButton.Name = "removePlayerButton";
-            this.removePlayerButton.Size = new System.Drawing.Size(174, 39);
+            this.removePlayerButton.Size = new System.Drawing.Size(211, 58);
             this.removePlayerButton.TabIndex = 4;
             this.removePlayerButton.Text = "Remove Selected Player";
             this.removePlayerButton.UseVisualStyleBackColor = true;
             // 
             // addPlayerButton
             // 
-            this.addPlayerButton.Location = new System.Drawing.Point(269, 110);
+            this.addPlayerButton.Location = new System.Drawing.Point(1020, 120);
             this.addPlayerButton.Name = "addPlayerButton";
-            this.addPlayerButton.Size = new System.Drawing.Size(174, 39);
+            this.addPlayerButton.Size = new System.Drawing.Size(211, 56);
             this.addPlayerButton.TabIndex = 3;
             this.addPlayerButton.Text = "Add Player to Team";
             this.addPlayerButton.UseVisualStyleBackColor = true;
@@ -193,33 +194,35 @@
             // addPlayerIdTextBox
             // 
             this.addPlayerIdTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.addPlayerIdTextBox.Location = new System.Drawing.Point(301, 48);
+            this.addPlayerIdTextBox.Location = new System.Drawing.Point(1020, 63);
             this.addPlayerIdTextBox.Multiline = true;
             this.addPlayerIdTextBox.Name = "addPlayerIdTextBox";
-            this.addPlayerIdTextBox.Size = new System.Drawing.Size(152, 35);
+            this.addPlayerIdTextBox.Size = new System.Drawing.Size(154, 35);
             this.addPlayerIdTextBox.TabIndex = 2;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(233, 56);
+            this.label5.Location = new System.Drawing.Point(1016, 33);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(71, 18);
+            this.label5.Size = new System.Drawing.Size(83, 20);
             this.label5.TabIndex = 1;
             this.label5.Text = "Player ID:";
             // 
             // teamMembersDataGridView
             // 
             this.teamMembersDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.teamMembersDataGridView.Location = new System.Drawing.Point(6, 23);
+            this.teamMembersDataGridView.Location = new System.Drawing.Point(12, 41);
             this.teamMembersDataGridView.Name = "teamMembersDataGridView";
             this.teamMembersDataGridView.RowHeadersWidth = 51;
             this.teamMembersDataGridView.RowTemplate.Height = 24;
-            this.teamMembersDataGridView.Size = new System.Drawing.Size(221, 184);
+            this.teamMembersDataGridView.Size = new System.Drawing.Size(949, 187);
             this.teamMembersDataGridView.TabIndex = 0;
+            this.teamMembersDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.teamMembersDataGridView_CellContentClick);
             // 
             // teamDetailsGroupBox
             // 
+            this.teamDetailsGroupBox.Controls.Add(this.createTeamButton);
             this.teamDetailsGroupBox.Controls.Add(this.clearTeamButton);
             this.teamDetailsGroupBox.Controls.Add(this.deleteTeamButton);
             this.teamDetailsGroupBox.Controls.Add(this.updateTeamButton);
@@ -230,39 +233,49 @@
             this.teamDetailsGroupBox.Controls.Add(this.label3);
             this.teamDetailsGroupBox.Controls.Add(this.label2);
             this.teamDetailsGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.teamDetailsGroupBox.Location = new System.Drawing.Point(428, 19);
+            this.teamDetailsGroupBox.Location = new System.Drawing.Point(18, 277);
             this.teamDetailsGroupBox.Name = "teamDetailsGroupBox";
-            this.teamDetailsGroupBox.Size = new System.Drawing.Size(465, 321);
+            this.teamDetailsGroupBox.Size = new System.Drawing.Size(1238, 267);
             this.teamDetailsGroupBox.TabIndex = 2;
             this.teamDetailsGroupBox.TabStop = false;
             this.teamDetailsGroupBox.Text = "Team Details";
             // 
+            // createTeamButton
+            // 
+            this.createTeamButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.createTeamButton.Location = new System.Drawing.Point(718, 70);
+            this.createTeamButton.Name = "createTeamButton";
+            this.createTeamButton.Size = new System.Drawing.Size(134, 62);
+            this.createTeamButton.TabIndex = 9;
+            this.createTeamButton.Text = "Create Team";
+            this.createTeamButton.UseVisualStyleBackColor = true;
+            // 
             // clearTeamButton
             // 
-            this.clearTeamButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clearTeamButton.Location = new System.Drawing.Point(310, 255);
+            this.clearTeamButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clearTeamButton.Location = new System.Drawing.Point(903, 175);
             this.clearTeamButton.Name = "clearTeamButton";
-            this.clearTeamButton.Size = new System.Drawing.Size(111, 44);
+            this.clearTeamButton.Size = new System.Drawing.Size(145, 57);
             this.clearTeamButton.TabIndex = 8;
             this.clearTeamButton.Text = "Clear Selection";
             this.clearTeamButton.UseVisualStyleBackColor = true;
             // 
             // deleteTeamButton
             // 
-            this.deleteTeamButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deleteTeamButton.Location = new System.Drawing.Point(172, 255);
+            this.deleteTeamButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteTeamButton.Location = new System.Drawing.Point(718, 175);
             this.deleteTeamButton.Name = "deleteTeamButton";
-            this.deleteTeamButton.Size = new System.Drawing.Size(111, 44);
+            this.deleteTeamButton.Size = new System.Drawing.Size(134, 57);
             this.deleteTeamButton.TabIndex = 7;
             this.deleteTeamButton.Text = "Delete Team";
             this.deleteTeamButton.UseVisualStyleBackColor = true;
             // 
             // updateTeamButton
             // 
-            this.updateTeamButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateTeamButton.Location = new System.Drawing.Point(41, 255);
+            this.updateTeamButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updateTeamButton.Location = new System.Drawing.Point(903, 70);
             this.updateTeamButton.Name = "updateTeamButton";
-            this.updateTeamButton.Size = new System.Drawing.Size(111, 44);
+            this.updateTeamButton.Size = new System.Drawing.Size(145, 62);
             this.updateTeamButton.TabIndex = 6;
             this.updateTeamButton.Text = "Update Details";
             this.updateTeamButton.UseVisualStyleBackColor = true;
@@ -271,71 +284,71 @@
             // 
             this.captainIdTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.captainIdTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.captainIdTextBox.Location = new System.Drawing.Point(197, 177);
+            this.captainIdTextBox.Location = new System.Drawing.Point(278, 200);
             this.captainIdTextBox.Multiline = true;
             this.captainIdTextBox.Name = "captainIdTextBox";
-            this.captainIdTextBox.Size = new System.Drawing.Size(176, 38);
+            this.captainIdTextBox.Size = new System.Drawing.Size(237, 38);
             this.captainIdTextBox.TabIndex = 5;
             // 
             // teamNameTextBox
             // 
             this.teamNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.teamNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.teamNameTextBox.Location = new System.Drawing.Point(197, 111);
+            this.teamNameTextBox.Location = new System.Drawing.Point(278, 134);
             this.teamNameTextBox.Multiline = true;
             this.teamNameTextBox.Name = "teamNameTextBox";
-            this.teamNameTextBox.Size = new System.Drawing.Size(176, 38);
+            this.teamNameTextBox.Size = new System.Drawing.Size(237, 38);
             this.teamNameTextBox.TabIndex = 4;
             // 
             // teamIdTextBox
             // 
             this.teamIdTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.teamIdTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.teamIdTextBox.Location = new System.Drawing.Point(197, 47);
+            this.teamIdTextBox.Location = new System.Drawing.Point(278, 70);
             this.teamIdTextBox.Multiline = true;
             this.teamIdTextBox.Name = "teamIdTextBox";
             this.teamIdTextBox.ReadOnly = true;
-            this.teamIdTextBox.Size = new System.Drawing.Size(176, 38);
+            this.teamIdTextBox.Size = new System.Drawing.Size(237, 38);
             this.teamIdTextBox.TabIndex = 3;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(26, 195);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(99, 212);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(114, 16);
+            this.label4.Size = new System.Drawing.Size(145, 20);
             this.label4.TabIndex = 2;
             this.label4.Text = "Captain Player ID:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(66, 129);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(139, 152);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(86, 16);
+            this.label3.Size = new System.Drawing.Size(105, 20);
             this.label3.TabIndex = 1;
             this.label3.Text = "Team Name:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(93, 65);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(166, 88);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 16);
+            this.label2.Size = new System.Drawing.Size(78, 20);
             this.label2.TabIndex = 0;
             this.label2.Text = "Team ID:";
             // 
             // teamsDataGridView
             // 
             this.teamsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.teamsDataGridView.Location = new System.Drawing.Point(6, 42);
+            this.teamsDataGridView.Location = new System.Drawing.Point(18, 42);
             this.teamsDataGridView.Name = "teamsDataGridView";
             this.teamsDataGridView.RowHeadersWidth = 51;
             this.teamsDataGridView.RowTemplate.Height = 24;
-            this.teamsDataGridView.Size = new System.Drawing.Size(374, 517);
+            this.teamsDataGridView.Size = new System.Drawing.Size(1238, 216);
             this.teamsDataGridView.TabIndex = 1;
             // 
             // label1
@@ -350,7 +363,8 @@
             // 
             // backButton
             // 
-            this.backButton.Location = new System.Drawing.Point(12, 621);
+            this.backButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.backButton.Location = new System.Drawing.Point(34, 910);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(165, 56);
             this.backButton.TabIndex = 1;
@@ -361,12 +375,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(925, 710);
+            this.ClientSize = new System.Drawing.Size(1351, 978);
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.mainTabControl);
             this.Name = "ManageUsersAndTeamsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manage Users & Teams";
+            this.Load += new System.EventHandler(this.ManageUsersAndTeamsForm_Load_1);
             this.mainTabControl.ResumeLayout(false);
             this.playersTabPage.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
@@ -381,6 +396,7 @@
             this.teamDetailsGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.teamsDataGridView)).EndInit();
             this.ResumeLayout(false);
+
         }
 
         #endregion
@@ -412,5 +428,6 @@
         private System.Windows.Forms.TextBox addPlayerIdTextBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button backButton;
+        private System.Windows.Forms.Button createTeamButton;
     }
 }

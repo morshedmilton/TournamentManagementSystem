@@ -54,12 +54,23 @@ namespace Tournament_Management_System.Controller
             Players playersDataAccess = new Players();
             playersDataAccess.DeletePlayer(playerId);
         }
+        public Player SearchPlayerByUserId(int userId)
+        {
+            Players playersDataAccess = new Players();
+            Player player = playersDataAccess.SearchPlayerByUserId(userId);
+            return player;
+        }
 
         public List<Player> GetAllPlayers()
         {
             Players playersDataAccess = new Players();
             List<Player> playerList = playersDataAccess.GetAllPlayers();
             return playerList;
+        }
+        public int GetPlayerCountByTeam(int teamId)
+        {
+            Players playersDataAccess = new Players();
+            return playersDataAccess.GetPlayerCountByTeam(teamId);
         }
 
         public Player SearchPlayerById(int playerId)

@@ -96,5 +96,6 @@ namespace Tournament_Management_System.View
             LoginForm lf = new LoginForm();
             lf.Show();
         }
+
     }
 }

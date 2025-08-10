@@ -98,11 +98,29 @@
     <Compile Include="View\ManageGamesForm.Designer.cs">
       <DependentUpon>ManageGamesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ManageTeamForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ManageTeamForm.Designer.cs">
+      <DependentUpon>ManageTeamForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ManageTournamentsAndMatchesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ManageTournamentsAndMatchesForm.Designer.cs">
+      <DependentUpon>ManageTournamentsAndMatchesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\ManageUsersAndTeamsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\ManageUsersAndTeamsForm.Designer.cs">
       <DependentUpon>ManageUsersAndTeamsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\PasswordResetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\PasswordResetForm.Designer.cs">
+      <DependentUpon>PasswordResetForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\PlayerDashboard.cs">
       <SubType>Form</SubType>
@@ -110,11 +128,29 @@
     <Compile Include="View\PlayerDashboard.Designer.cs">
       <DependentUpon>PlayerDashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\PlayerProfileForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\PlayerProfileForm.Designer.cs">
+      <DependentUpon>PlayerProfileForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\RegistrationForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\RegistrationForm.Designer.cs">
       <DependentUpon>RegistrationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ViewMyMatchesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ViewMyMatchesForm.Designer.cs">
+      <DependentUpon>ViewMyMatchesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ViewTournamentsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ViewTournamentsForm.Designer.cs">
+      <DependentUpon>ViewTournamentsForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -134,14 +170,32 @@
     <EmbeddedResource Include="View\ManageGamesForm.resx">
       <DependentUpon>ManageGamesForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\ManageTeamForm.resx">
+      <DependentUpon>ManageTeamForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ManageTournamentsAndMatchesForm.resx">
+      <DependentUpon>ManageTournamentsAndMatchesForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\ManageUsersAndTeamsForm.resx">
       <DependentUpon>ManageUsersAndTeamsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\PasswordResetForm.resx">
+      <DependentUpon>PasswordResetForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\PlayerDashboard.resx">
       <DependentUpon>PlayerDashboard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\PlayerProfileForm.resx">
+      <DependentUpon>PlayerProfileForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\RegistrationForm.resx">
       <DependentUpon>RegistrationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ViewMyMatchesForm.resx">
+      <DependentUpon>ViewMyMatchesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ViewTournamentsForm.resx">
+      <DependentUpon>ViewTournamentsForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="OnlineTournamentDBDataSet.xsc">
       <DependentUpon>OnlineTournamentDBDataSet.xsd</DependentUpon>
@@ -178,8 +232,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Images\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

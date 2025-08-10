@@ -14,8 +14,7 @@ namespace Tournament_Management_System.Model
 
         public void AddRegistration(TournamentRegistration reg)
         {
-            SqlCommand cmd = sda.GetQuery("INSERT INTO TournamentRegistrations (RegistrationID, TournamentID, TeamID) VALUES(@regId, @tournamentId, @teamId);");
-            cmd.Parameters.AddWithValue("@regId", reg.RegistrationID);
+            SqlCommand cmd = sda.GetQuery("INSERT INTO TournamentRegistrations (TournamentID, TeamID) VALUES(@tournamentId, @teamId);");
             cmd.Parameters.AddWithValue("@tournamentId", reg.TournamentID);
             cmd.Parameters.AddWithValue("@teamId", reg.TeamID);
             cmd.CommandType = CommandType.Text;
@@ -46,6 +45,37 @@ namespace Tournament_Management_System.Model
             cmd.Connection.Close();
         }
 
+        public void DeleteRegistrationsByTournament(int tournamentId)
+        {
+            SqlCommand cmd = sda.GetQuery("DELETE FROM TournamentRegistrations WHERE TournamentID=@tId;");
+            cmd.Parameters.AddWithValue("@tId", tournamentId);
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection.Open();
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+        }
+
+        public bool IsTeamRegistered(int tournamentId, int teamId)
+        {
+            SqlCommand cmd = sda.GetQuery("SELECT COUNT(*) FROM TournamentRegistrations WHERE TournamentID = @tournamentId AND TeamID = @teamId;");
+            cmd.Parameters.AddWithValue("@tournamentId", tournamentId);
+            cmd.Parameters.AddWithValue("@teamId", teamId);
+            cmd.Connection.Open();
+            int count = (int)cmd.ExecuteScalar();
+            cmd.Connection.Close();
+            return count > 0;
+        }
+
+        public int GetRegistrationCountByTeam(int teamId)
+        {
+            SqlCommand cmd = sda.GetQuery("SELECT COUNT(*) FROM TournamentRegistrations WHERE TeamID = @teamId;");
+            cmd.Parameters.AddWithValue("@teamId", teamId);
+            cmd.Connection.Open();
+            int count = (int)cmd.ExecuteScalar();
+            cmd.Connection.Close();
+            return count;
+        }
+
         public TournamentRegistration SearchRegistrationById(int regId)
         {
             SqlCommand cmd = sda.GetQuery("SELECT * FROM TournamentRegistrations WHERE RegistrationID=@regId;");
@@ -74,6 +104,15 @@ namespace Tournament_Management_System.Model
         {
             SqlCommand cmd = sda.GetQuery("SELECT * FROM TournamentRegistrations WHERE TournamentID=@tId;");
             cmd.Parameters.AddWithValue("@tId", tournamentId);
+            cmd.CommandType = CommandType.Text;
+            List<TournamentRegistration> regList = this.GetData(cmd);
+            return regList;
+        }
+
+        public List<TournamentRegistration> GetRegistrationsByTeam(int teamId)
+        {
+            SqlCommand cmd = sda.GetQuery("SELECT * FROM TournamentRegistrations WHERE TeamID=@teamId;");
+            cmd.Parameters.AddWithValue("@teamId", teamId);
             cmd.CommandType = CommandType.Text;
             List<TournamentRegistration> regList = this.GetData(cmd);
             return regList;

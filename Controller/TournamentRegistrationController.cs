@@ -27,6 +27,24 @@ namespace Tournament_Management_System.Controller
             tournamentRegDataAccess.DeleteRegistration(regId);
         }
 
+        public void DeleteRegistrationsByTournament(int tournamentId)
+        {
+            TournamentRegistrations trDataAccess = new TournamentRegistrations();
+            trDataAccess.DeleteRegistrationsByTournament(tournamentId);
+        }
+
+        public bool IsTeamRegistered(int tournamentId, int teamId)
+        {
+            TournamentRegistrations trDataAccess = new TournamentRegistrations();
+            return trDataAccess.IsTeamRegistered(tournamentId, teamId);
+        }
+
+        public int GetRegistrationCountByTeam(int teamId)
+        {
+            TournamentRegistrations trDataAccess = new TournamentRegistrations();
+            return trDataAccess.GetRegistrationCountByTeam(teamId);
+        }
+
         public TournamentRegistration SearchRegistrationById(int regId)
         {
             TournamentRegistrations tournamentRegDataAccess = new TournamentRegistrations();
@@ -39,6 +57,12 @@ namespace Tournament_Management_System.Controller
             TournamentRegistrations tournamentRegDataAccess = new TournamentRegistrations();
             List<TournamentRegistration> regList = tournamentRegDataAccess.GetAllRegistrations();
             return regList;
+        }
+
+        public List<TournamentRegistration> GetRegistrationsByTeam(int teamId)
+        {
+            TournamentRegistrations trDataAccess = new TournamentRegistrations();
+            return trDataAccess.GetRegistrationsByTeam(teamId);
         }
     }
 }

@@ -14,8 +14,7 @@ namespace Tournament_Management_System.Model
 
         public void AddMatch(Match match)
         {
-            SqlCommand cmd = sda.GetQuery("INSERT INTO Matches (MatchID, Match_Round_Number, Match_DateTime, Status, Team1_Score, Team2_Score, TournamentID, Team1_ID, Team2_ID, WinnerTeamID) VALUES(@matchId, @roundNumber, @dateTime, @status, @t1Score, @t2Score, @tournamentId, @t1Id, @t2Id, @winnerId);");
-            cmd.Parameters.AddWithValue("@matchId", match.MatchID);
+            SqlCommand cmd = sda.GetQuery("INSERT INTO Matches (Match_Round_Number, Match_DateTime, Status, Team1_Score, Team2_Score, TournamentID, Team1_ID, Team2_ID, WinnerTeamID) VALUES(@roundNumber, @dateTime, @status, @t1Score, @t2Score, @tournamentId, @t1Id, @t2Id, @winnerId);");
             cmd.Parameters.AddWithValue("@roundNumber", match.Match_Round_Number);
             cmd.Parameters.AddWithValue("@dateTime", match.Match_DateTime);
             cmd.Parameters.AddWithValue("@status", match.Status);
@@ -37,6 +36,38 @@ namespace Tournament_Management_System.Model
             cmd.ExecuteNonQuery();
             cmd.Connection.Close();
         }
+
+        public void AddMatches(List<Match> matches)
+        {
+            if (matches == null || matches.Count == 0) return;
+
+            StringBuilder sCommand = new StringBuilder("INSERT INTO Matches (Match_Round_Number, Match_DateTime, Status, Team1_Score, Team2_Score, TournamentID, Team1_ID, Team2_ID) VALUES ");
+            List<string> Rows = new List<string>();
+            for (int i = 0; i < matches.Count; i++)
+            {
+                Rows.Add(string.Format("(@Round{0}, @DateTime{0}, @Status{0}, @T1Score{0}, @T2Score{0}, @TournamentID{0}, @T1ID{0}, @T2ID{0})", i));
+            }
+            sCommand.Append(string.Join(",", Rows));
+
+            using (SqlCommand cmd = sda.GetQuery(sCommand.ToString()))
+            {
+                for (int i = 0; i < matches.Count; i++)
+                {
+                    cmd.Parameters.AddWithValue(string.Format("@Round{0}", i), matches[i].Match_Round_Number);
+                    cmd.Parameters.AddWithValue(string.Format("@DateTime{0}", i), matches[i].Match_DateTime);
+                    cmd.Parameters.AddWithValue(string.Format("@Status{0}", i), matches[i].Status);
+                    cmd.Parameters.AddWithValue(string.Format("@T1Score{0}", i), matches[i].Team1_Score);
+                    cmd.Parameters.AddWithValue(string.Format("@T2Score{0}", i), matches[i].Team2_Score);
+                    cmd.Parameters.AddWithValue(string.Format("@TournamentID{0}", i), matches[i].TournamentID);
+                    cmd.Parameters.AddWithValue(string.Format("@T1ID{0}", i), matches[i].Team1_ID);
+                    cmd.Parameters.AddWithValue(string.Format("@T2ID{0}", i), matches[i].Team2_ID);
+                }
+                cmd.Connection.Open();
+                cmd.ExecuteNonQuery();
+                cmd.Connection.Close();
+            }
+        }
+
 
         public void UpdateMatchResult(Match match)
         {
@@ -69,6 +100,16 @@ namespace Tournament_Management_System.Model
             cmd.Connection.Close();
         }
 
+        public void DeleteMatchesByTournament(int tournamentId)
+        {
+            SqlCommand cmd = sda.GetQuery("DELETE FROM Matches WHERE TournamentID=@tId;");
+            cmd.Parameters.AddWithValue("@tId", tournamentId);
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection.Open();
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+        }
+
         public Match SearchMatchById(int matchId)
         {
             SqlCommand cmd = sda.GetQuery("SELECT * FROM Matches WHERE MatchID=@matchId;");
@@ -83,6 +124,25 @@ namespace Tournament_Management_System.Model
             {
                 return null;
             }
+        }
+
+        public List<Match> GetMatchesByTournamentAndTeam(int tournamentId, int teamId)
+        {
+            SqlCommand cmd = sda.GetQuery("SELECT * FROM Matches WHERE TournamentID=@tId AND (Team1_ID = @teamId OR Team2_ID = @teamId);");
+            cmd.Parameters.AddWithValue("@tId", tournamentId);
+            cmd.Parameters.AddWithValue("@teamId", teamId);
+            cmd.CommandType = CommandType.Text;
+            List<Match> matchList = this.GetData(cmd);
+            return matchList;
+        }
+        public int GetMatchCountByTeam(int teamId)
+        {
+            SqlCommand cmd = sda.GetQuery("SELECT COUNT(*) FROM Matches WHERE Team1_ID = @teamId OR Team2_ID = @teamId;");
+            cmd.Parameters.AddWithValue("@teamId", teamId);
+            cmd.Connection.Open();
+            int count = (int)cmd.ExecuteScalar();
+            cmd.Connection.Close();
+            return count;
         }
 
         public List<Match> GetMatchesByTournament(int tournamentId)

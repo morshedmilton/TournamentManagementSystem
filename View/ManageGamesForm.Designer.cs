@@ -175,6 +175,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "ManageGamesForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ManageGamesForm";
             this.Load += new System.EventHandler(this.ManageGamesForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gamesDataGridView)).EndInit();

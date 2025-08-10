@@ -14,8 +14,7 @@ namespace Tournament_Management_System.Model
 
         public void AddTeam(Team team)
         {
-            SqlCommand cmd = sda.GetQuery("INSERT INTO Teams (TeamID, TeamName, Date_Created, Captain_PlayerID) VALUES(@teamId, @teamName, @dateCreated, @captainPlayerId);");
-            cmd.Parameters.AddWithValue("@teamId", team.TeamID);
+            SqlCommand cmd = sda.GetQuery("INSERT INTO Teams (TeamName, Date_Created, Captain_PlayerID) VALUES(@teamName, @dateCreated, @captainPlayerId);");
             cmd.Parameters.AddWithValue("@teamName", team.TeamName);
             cmd.Parameters.AddWithValue("@dateCreated", team.Date_Created);
             if (team.Captain_PlayerID.HasValue)
